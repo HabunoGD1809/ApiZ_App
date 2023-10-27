@@ -299,12 +299,10 @@ class UniversidadesPorPaisScreen extends StatefulWidget {
   const UniversidadesPorPaisScreen({Key? key}) : super(key: key);
 
   @override
-  _UniversidadesPorPaisScreenState createState() =>
-      _UniversidadesPorPaisScreenState();
+  _UniversidadesPorPaisScreenState createState() => _UniversidadesPorPaisScreenState();
 }
 
-class _UniversidadesPorPaisScreenState
-    extends State<UniversidadesPorPaisScreen> {
+class _UniversidadesPorPaisScreenState extends State<UniversidadesPorPaisScreen> {
   String countryName = "";
   List<University> universities = [];
   bool isLoading = false;
@@ -314,19 +312,16 @@ class _UniversidadesPorPaisScreenState
       isLoading = true;
     });
 
-    final response = await http.get(Uri.parse(
-        'http://universities.hipolabs.com/search?country=$countryName'));
-    final data = json.decode(response.body);
+    final response = await http.get(Uri.parse('http://universities.hipolabs.com/search?country=$countryName'));
+    final data = json.decode(response.body) as List;
 
-    List<University> tempUniversities = [];
-    for (var item in data) {
-      University university = University(
+    List<University> tempUniversities = data.map((item) {
+      return University(
         name: item['name'],
-        domain: item['domains'],
-        website: item['web_pages'],
+        domains: List<String>.from(item['domains']),
+        webPages: List<String>.from(item['web_pages']),
       );
-      tempUniversities.add(university);
-    }
+    }).toList();
 
     setState(() {
       isLoading = false;
@@ -340,75 +335,80 @@ class _UniversidadesPorPaisScreenState
       appBar: AppBar(
         title: const Text('Universidades por País'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 215,
-              child: TextField(
-                onChanged: (value) {
-                  setState(() {
-                    countryName = value;
-                  });
-                },
-                decoration: InputDecoration(
-                  labelText: 'Nombre del País en Inglés',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.red, width: 2.0),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[200],
+      body: ListView(
+        children: <Widget>[
+          SizedBox(
+            width: 215,
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  countryName = value;
+                });
+              },
+              decoration: InputDecoration(
+                labelText: 'Nombre del País en Inglés',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.red, width: 2.0),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
             ),
-            const SizedBox(height: 20),
-            buildElevatedButton('Obtener Universidades', () {
-              _getUniversities();
-            }),
-            if (isLoading)
-              const CircularProgressIndicator()
-            else if (universities.isNotEmpty)
-              Expanded(
-                child: ListView.builder(
-                  itemCount: universities.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('Nombre: ${universities[index].name}'),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Dominio: ${universities[index].domain}'),
-                          Text('Sitio Web: ${universities[index].website}'),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+          ),
+          const SizedBox(height: 20),
+          buildElevatedButton('Obtener Universidades', () {
+            _getUniversities();
+          }),
+          if (isLoading)
+            const Center(
+              child: CircularProgressIndicator(),
+            )
+          else if (universities.isNotEmpty)
+            Expanded(
+              child: ListView.builder(
+                itemCount: universities.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text('Nombre: ${universities[index].name}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Dominio: ${universities[index].domains.join(", ")}'),
+                        Text('Sitio Web: ${universities[index].webPages.join(", ")}'),
+                      ],
+                    ),
+                  );
+                },
               ),
-          ],
-        ),
+            ),
+        ],
       ),
+    );
+  }
+
+  ElevatedButton buildElevatedButton(String label, void Function() onPressed) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      child: Text(label),
     );
   }
 }
 
 class University {
   final String name;
-  final String domain;
-  final String website;
+  final List<String> domains;
+  final List<String> webPages;
 
   University({
     required this.name,
-    required this.domain,
-    required this.website,
+    required this.domains,
+    required this.webPages,
   });
 }
-
 class ClimaEnRDScreen extends StatefulWidget {
   const ClimaEnRDScreen({Key? key}) : super(key: key);
 
