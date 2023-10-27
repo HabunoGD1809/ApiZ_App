@@ -26,17 +26,20 @@ Para probar la aplicación en tu dispositivo Android, puedes descargar el APK de
 
 A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
-![image](https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/637a2118-c93e-4692-9da5-dbbd353cea5c)
-
-![image](https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/a287fee7-8e4a-43e4-827f-2dc555443787)
-
-![image](https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/9c0949d3-92c2-40c7-b4c0-053ae9807aaf)
-
-![image](https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/65c670d7-dd84-4d03-8b4c-56005d50e3bb)
+<table>
+  <tr>
+    <td><img src="https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/637a2118-c93e-4692-9da5-dbbd353cea5c" alt="Image 1"></td>
+    <td><img src="https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/a287fee7-8e4a-43e4-827f-2dc555443787" alt="Image 2"></td>
+    <td><img src="https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/9c0949d3-92c2-40c7-b4c0-053ae9807aaf" alt="Image 3"></td>
+    <td><img src="https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/65c670d7-dd84-4d03-8b4c-56005d50e3bb" alt="Image 4"></td>
+  </tr>
+</table>
 
 ## Icono de la Aplicación
 
 El icono de la aplicación es la foto del desarrollador.
+
+
 ![image](https://github.com/HabunoGD1809/ApiZ_App/assets/68973717/4a13babb-67a2-4f38-aabf-b69baec36b93)
 
 
