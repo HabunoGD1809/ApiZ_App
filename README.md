@@ -26,11 +26,8 @@ Para probar la aplicación en tu dispositivo Android, puedes descargar el APK de
 
 A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
-(insertar capturas de pantalla aquí)
+(insertar capturas )
 
-## Control de Versiones
-
-El código fuente de la aplicación se encuentra disponible en un repositorio de control de versiones. Puedes acceder al repositorio en el siguiente enlace: [Repositorio en GitHub](insertar-enlace-al-repositorio-aquí).
 
 ## Icono de la Aplicación
 
