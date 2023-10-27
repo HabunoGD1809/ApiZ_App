@@ -20,7 +20,7 @@ Esta es una aplicación en Flutter que muestra varias vistas y funcionalidades i
 
 ## Instalación
 
-Para probar la aplicación en tu dispositivo Android, puedes descargar el APK desde el siguiente enlace: [Descargar APK](insertar-enlace-al-apk-aquí).
+Para probar la aplicación en tu dispositivo Android, puedes descargar el APK desde el siguiente enlace: [Descargar APK](https://drive.google.com/file/d/1TS6nDnzKYeVNMDOOo1lXa1Dbt41lDal-/view?usp=sharing).
 
 ## Capturas de Pantalla
 
